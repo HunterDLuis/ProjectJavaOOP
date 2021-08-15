@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 public class Person {
     String name;
     String ci;
@@ -23,5 +27,21 @@ public class Person {
 
     public String getName() {
         return name;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    void calculateAge(String birthDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate birth = LocalDate.parse(birthDate, formatter);
+        LocalDate nowAge = LocalDate.now();
+
+        Period period = Period.between(birth, nowAge);
+        System.out.printf("You age is: %s years, %s months and %s days",
+                period.getYears(),
+                period.getMonths(),
+                period.getDays());
     }
 }
