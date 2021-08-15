@@ -44,4 +44,8 @@ public class Person {
                 period.getMonths(),
                 period.getDays());
     }
+
+    public String displayData(){
+        return "Name is: "+getName()+" and my address is: "+address;
+    }
 }
